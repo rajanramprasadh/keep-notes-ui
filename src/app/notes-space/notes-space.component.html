@@ -1,0 +1,28 @@
+<div class="row">
+    <div class="col-4">
+        <h3>Title</h3>
+        <div class="list-group" id="list-noteTitle" role="tablist">
+            <a *ngFor="let noteDetail of noteDetails" 
+                class="list-group-item list-group-item-action"
+                id="list-noteTitle"
+                href="#list-{{noteDetail.title}}"
+                [class.active]="noteDetail.title === selectedTitle"
+                (click)="onSelectTitle(noteDetail.title)">
+                    {{ noteDetail.title }}
+            </a>
+        </div>
+    </div>
+    <div class="col-8">
+        <h3>Description</h3>
+        <div class="tab-content" id="nav-noteDescription">
+            <div *ngFor="let noteDetail of noteDetails" 
+                [class.active]="selectedTitle === noteDetail.title" 
+                class="tab-pane fade show" 
+                id="list-{{noteDetail.title}}" 
+                role="tabpanel" 
+                aria-labelledby="list-home-list">
+                {{ noteDetail.description }}
+            </div>
+        </div>
+    </div>
+</div>      
